@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff">
+    <!--  MapRoute 地图线路页面-->
+
+    <!--  导航条-->
+    <RelativeLayout android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_title_bar"
+            >
+        <!--  返回箭头-->
+        <Button android:id="@+id/map_list_rebackButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_nav_back"
+                android:layout_centerVertical="true"
+                >
+
+        </Button>
+        <!--  中间文字-->
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="详细信息"
+                  android:textSize="16dp"
+                  android:layout_centerInParent="true"
+                  android:textColor="#ffffff">
+
+        </TextView>
+
+        <!--  右侧按键 -->
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_route"
+                android:layout_marginRight="10dp">
+
+        </Button>
+
+
+    </RelativeLayout>
+
+    <!--  路线选择条-->
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+
+            >
+        <LinearLayout android:id="@+id/map_list_rebackButton"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:layout_weight="1"
+                      android:background="@drawable/tab">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:background="@drawable/ic_byfoot">
+            </ImageView>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="步行"
+                      android:textColor="#000000"
+                    >
+            </TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/map_list_rebackButton"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:layout_weight="1"
+                      android:background="@drawable/tab">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:background="@drawable/bus">
+            </ImageView>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="2dp"
+                      android:text="公交"
+                      android:textColor="#000000"
+                    >
+            </TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/map_list_rebackButton"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:layout_weight="1"
+                      android:background="@drawable/tab">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:background="@drawable/ic_bycar">
+            </ImageView>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="驾车"
+                      android:textColor="#000000"
+                    >
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Map 显示-->
+
+    <RelativeLayout
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+            android:layout_weight="1">
+        <!-- Map 显示-->
+        <com.baidu.mapapi.map.MapView
+                android:id="@+id/maproute_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+
+        </com.baidu.mapapi.map.MapView>
+        <!-- 距离  显示-->
+        <LinearLayout
+                      android:layout_width="fill_parent"
+                      android:layout_height="30dp"
+                      android:gravity="center_vertical"
+                      android:background="#8f000000"
+               android:layout_alignParentTop="true">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:text="全程1.2公里，耗时约20分钟"
+                      android:textColor="#ffffff"
+                      android:textSize="12dp"
+                    >
+            </TextView>
+        </LinearLayout>
+
+        <!-- 详细信息 显示-->
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                  android:layout_alignParentBottom="true"
+                android:background="#8f000000">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:text="XXX大酒店"
+                      android:textColor="#ffffff"
+                      android:textSize="16dp"
+                    >  </TextView>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:text="地址：西安市长安路120XXXX号"
+                      android:textColor="#ffffff"
+                      android:textSize="12dp"
+                    >
+            </TextView>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <!-- 电话显示-->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+               android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/ic_phone">
+        </ImageView>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="暂无电话"
+                  android:textColor="#000000"
+                >
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

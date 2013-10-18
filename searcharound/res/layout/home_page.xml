@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#ffffff"
+        >
+   <!--  HomePage 首页 一级页面-->
+
+    <!--  top 顶标题的三个部件-->
+     <RelativeLayout
+             android:orientation="horizontal"
+             android:layout_width="fill_parent"
+             android:layout_height="44dp"
+             android:background="@drawable/bg_title_bar"
+             android:gravity="center">
+         <Button
+                 android:layout_width="32dp"
+                 android:layout_height="32dp"
+                 android:background="@drawable/abs__ic_search"
+                 android:layout_marginLeft="10dp"></Button>
+         <TextView
+                 android:layout_width="fill_parent"
+                 android:layout_height="32dp"
+                 android:text="搜搜搜"
+                 android:textColor="#ffffff"
+                 android:textSize="16dp"
+                 android:gravity="center"></TextView>
+          <Button
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/ic_action_setting"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="10dp"></Button>
+     </RelativeLayout>
+
+    <!-- center 列表部分-->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        <ListView
+                android:id="@+id/listview_home"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fadingEdge="none"></ListView>
+     </LinearLayout>
+
+    <!-- bottom -->
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_title_bar"
+            android:gravity="center">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="搜索中..."
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"></TextView>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_localbar_location"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"></Button>
+    </RelativeLayout>
+
+</LinearLayout>
+

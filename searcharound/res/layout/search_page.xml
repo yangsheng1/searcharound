@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#ffffff"
+        >
+    <!--  search  页面-->
+
+    <!--  top 顶标题的三个部件-->
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_title_bar"
+            >
+        <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_nav_back"
+                android:layout_marginLeft="10dp"></Button>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:hint="11111"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/abs__textfield_search_selected_holo_dark"></EditText>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/abs__ic_search"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"></Button>
+    </RelativeLayout>
+
+    <!-- center 列表部分-->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <ListView
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+
+
+</LinearLayout>
+

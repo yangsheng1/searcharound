@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff">
+    <!--  ListPage 列表页面-->
+
+    <!--  导航条-->
+    <RelativeLayout android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_title_bar"
+            >
+        <!--  返回箭头-->
+        <Button android:id="@+id/map_list_rebackButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_nav_back"
+                android:layout_centerVertical="true"
+                >
+
+        </Button>
+        <!--  中间文字-->
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="餐饮服务"
+                  android:textSize="16dp"
+                  android:layout_centerInParent="true"
+                  android:textColor="#ffffff">
+
+        </TextView>
+
+        <!--  右侧按键 -->
+        <LinearLayout  android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+
+                       android:layout_marginRight="10dp">
+            <Button android:id="@+id/map_list_rebackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+
+                    android:background="@drawable/ic_refresh"
+                    android:layout_centerVertical="true"  >
+            </Button>
+            <Button android:id="@+id/map_list_rebackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_action_list"
+                    android:layout_centerVertical="true"  >
+            </Button>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--  搜索范围条-->
+    <Spinner android:id="@+id/map_list_spinner"
+             android:layout_width="fill_parent"
+             android:layout_height="30dp"
+             android:background="@drawable/bg_tab_top"
+             android:gravity="center">
+
+
+    </Spinner>
+
+    <!-- Map 显示-->
+    <com.baidu.mapapi.map.MapView
+            android:id="@+id/mapview"
+                android:layout_width="fill_parent"
+                  android:layout_height="wrap_content" >
+
+
+    </com.baidu.mapapi.map.MapView>
+
+
+</LinearLayout>
