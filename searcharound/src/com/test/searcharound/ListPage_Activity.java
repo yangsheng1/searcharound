@@ -21,9 +21,9 @@ import android.widget.*;
 public class ListPage_Activity extends Activity {
 
     private Spinner spinner;
-    private Button reback;
+    private ImageButton reback;
     private Intent intent;
-    private Button mapbutton;
+    private ImageButton mapbutton;
     private  String[] spn1Data = new String[] { "1000m内", "2000m内", "3000m内", "4000m内", "5000m内" };
 
     @Override
@@ -33,18 +33,19 @@ public class ListPage_Activity extends Activity {
         setContentView(R.layout.list_page);
 
 
-       reback = (Button) findViewById(R.id.list_rebackButton);
+       reback = (ImageButton) findViewById(R.id.list_rebackButton);
         reback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                ListPage_Activity.this.finish();
             }
         });
-        mapbutton = (Button) findViewById(R.id.map_list);
+        mapbutton = (ImageButton) findViewById(R.id.map_list);
         mapbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(ListPage_Activity.this,MapList_Activity.class);
+                intent = new Intent(ListPage_Activity.this, MapList_Activity.class);
+                ListPage_Activity.this.finish();
                 startActivity(intent);
             }
         });

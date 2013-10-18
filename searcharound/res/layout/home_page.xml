@@ -14,24 +14,27 @@
              android:layout_height="44dp"
              android:background="@drawable/bg_title_bar"
              android:gravity="center">
-         <Button
-                 android:layout_width="32dp"
-                 android:layout_height="32dp"
-                 android:background="@drawable/abs__ic_search"
-                 android:layout_marginLeft="10dp"></Button>
+         <ImageButton    android:id="@+id/search_button"
+                 android:layout_width="44dp"
+                 android:layout_height="44dp"
+                 android:src="@drawable/abs__ic_search"
+
+                 android:background="@drawable/home_change_search"
+                 android:layout_marginLeft="5dp"></ImageButton>
          <TextView
                  android:layout_width="fill_parent"
-                 android:layout_height="32dp"
+                 android:layout_height="44dp"
                  android:text="搜搜搜"
                  android:textColor="#ffffff"
                  android:textSize="16dp"
                  android:gravity="center"></TextView>
-          <Button
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:background="@drawable/ic_action_setting"
+          <ImageButton        android:id="@+id/set_button"
+                  android:layout_width="44dp"
+                  android:layout_height="44dp"
+                  android:src="@drawable/ic_action_setting"
+                  android:background="@drawable/home_change_search"
                   android:layout_alignParentRight="true"
-                  android:layout_marginRight="10dp"></Button>
+                  android:layout_marginRight="5dp"></ImageButton>
      </RelativeLayout>
 
     <!-- center 列表部分-->
