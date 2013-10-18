@@ -13,7 +13,7 @@
                     android:background="@drawable/bg_title_bar"
             >
         <!--  返回箭头-->
-        <Button android:id="@+id/map_list_rebackButton"
+        <Button android:id="@+id/map_list_reback"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                     android:background="@drawable/ic_refresh"
                     android:layout_centerVertical="true"  >
             </Button>
-            <Button android:id="@+id/map_list_rebackButton"
+            <Button android:id="@+id/list_change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
