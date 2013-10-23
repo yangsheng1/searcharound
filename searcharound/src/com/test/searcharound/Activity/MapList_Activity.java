@@ -61,45 +61,45 @@ public class MapList_Activity extends Activity {
 
         getMyLocation();
 
-        reback = (ImageButton) findViewById(R.id.map_list_reback);
-        reback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MapList_Activity.this, ListPage_Activity.class);
-                MapList_Activity.this.finish();
-                startActivity(intent);
-            }
-        });
-
-        listbutton = (ImageButton) findViewById(R.id.list_change);
-        listbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MapList_Activity.this, ListPage_Activity.class);
-                MapList_Activity.this.finish();
-                startActivity(intent);
-            }
-        });
-
-
-        spinner = (Spinner) findViewById(R.id.map_list_spinner);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-
-        MySpinnerAdapter<String> spn2Adapter = new MySpinnerAdapter<String>(
-                this, R.layout.list_spinner_item, R.id.text1, spn1Data2);
-        spn2Adapter.setDropDownViewResource(R.layout.list_spinner_dropdown_item);
-        spinner.setAdapter(spn2Adapter);
-
-
+//        reback = (ImageButton) findViewById(R.id.map_list_reback);
+//        reback.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MapList_Activity.this, ListPage_Activity.class);
+//                MapList_Activity.this.finish();
+//                startActivity(intent);
+//            }
+//        });
+//
+//        listbutton = (ImageButton) findViewById(R.id.list_change);
+//        listbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MapList_Activity.this, ListPage_Activity.class);
+//                MapList_Activity.this.finish();
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//        spinner = (Spinner) findViewById(R.id.map_list_spinner);
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//            @Override
+//            public void onItemSelected(AdapterView<?> arg0, View arg1,
+//                                       int arg2, long arg3) {
+//            }
+//            @Override
+//            public void onNothingSelected(AdapterView<?> arg0) {
+//            }
+//        });
+//
+//        MySpinnerAdapter<String> spn2Adapter = new MySpinnerAdapter<String>(
+//                this, R.layout.list_spinner_item, R.id.text1, spn1Data2);
+//        spn2Adapter.setDropDownViewResource(R.layout.list_spinner_dropdown_item);
+//        spinner.setAdapter(spn2Adapter);
+//
+//
 
     }
 

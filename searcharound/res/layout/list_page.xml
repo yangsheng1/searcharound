@@ -56,7 +56,7 @@
                     android:layout_height="44dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/home_change_search"
-                    android:src="@drawable/ic_action_map"
+                    android:src="@drawable/list_to_map"
                     android:layout_centerVertical="true"  >
             </ImageButton>
         </LinearLayout>
@@ -77,9 +77,20 @@
     <!--  List显示条-->
     <ListView       android:id="@+id/listview_listpage"
             android:layout_width="fill_parent"
+            android:layout_weight="1"
                   android:layout_height="wrap_content" >
 
 
     </ListView>
+    <!--  加载更多-->
+
+    <!-- Map 显示-->
+    <com.baidu.mapapi.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+
+    </com.baidu.mapapi.map.MapView>
 
 </LinearLayout>

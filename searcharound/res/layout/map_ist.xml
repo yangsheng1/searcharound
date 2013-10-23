@@ -73,7 +73,7 @@
 
     <!-- Map 显示-->
     <com.baidu.mapapi.map.MapView
-            android:id="@+id/mapview"
+            android:id="@+id/map_view"
                 android:layout_width="fill_parent"
                   android:layout_height="wrap_content" >
 
