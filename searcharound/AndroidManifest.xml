@@ -76,5 +76,4 @@
                 android:process=":remote">
         </service>
     </application>
-
 </manifest> 

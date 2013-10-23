@@ -149,14 +149,16 @@
                 android:gravity="center_vertical"
                   android:layout_alignParentBottom="true"
                 android:background="#8f000000">
-            <TextView android:layout_width="wrap_content"
+            <TextView   android:id="@+id/maproute_name"
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="10dp"
                       android:text="XXX大酒店"
                       android:textColor="#ffffff"
                       android:textSize="16dp"
                     >  </TextView>
-            <TextView android:layout_width="wrap_content"
+            <TextView   android:id="@+id/maproute_adress"
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="10dp"
                       android:text="地址：西安市长安路120XXXX号"
@@ -182,7 +184,8 @@
                    android:layout_height="wrap_content"
                    android:background="@drawable/ic_phone">
         </ImageView>
-        <TextView android:layout_width="wrap_content"
+        <TextView  android:id="@+id/maproute_tell"
+                android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginLeft="10dp"
                   android:text="暂无电话"

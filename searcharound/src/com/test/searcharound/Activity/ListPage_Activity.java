@@ -3,9 +3,10 @@ package com.test.searcharound.Activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +16,8 @@ import android.widget.*;
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.MKGeneralListener;
-import com.baidu.mapapi.map.MKEvent;
-import com.baidu.mapapi.map.MapController;
-import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.*;
+import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.test.searcharound.Demo.RearchDemo;
 import com.test.searcharound.Util.HttpJson;
 import com.test.searcharound.Util.MyLocation;
@@ -52,6 +52,7 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
     public static final String strKey = "8d0ce7b6adcae2bae226a8b3fe4a179b";
     private MapController mapController;
     private MapView mapView;
+    private PoiOverlay<OverlayItem> itemItemizedOverlay;
 
     private String[] spn1Data = new String[]{"1000m内", "2000m内", "3000m内", "4000m内", "5000m内"};
     private ListView listview_listpage;
@@ -61,6 +62,12 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
     private LayoutInflater layoutInflater;
     private LinearLayout list_more;
     private TextView list_more_text;
+    private View mapPopWindow;
+    private double XX;
+    private double YY;
+    private PoiOverlay<OverlayItem> centerOverlay;
+    private  RelativeLayout map_layout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +79,18 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
 
 
         listview_listpage = (ListView) findViewById(R.id.listview_listpage);
-
-
+        map_layout = (RelativeLayout) findViewById(R.id.map_layout);
+        map_layout.setVisibility(View.GONE);
 
         //mapview
         layoutInflater = LayoutInflater.from(this);
         mapView = (MapView) findViewById(R.id.mapview);
         mapController = mapView.getController();
 
-        mapController.setZoom(14);
-        mapView.setVisibility(View.GONE);
+        mapController.setZoom(15);
+
+        
+
 
 
         //接收跳转页面 传输的数据
@@ -105,10 +114,10 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
             public void onClick(View view) {
                 if (listview_listpage.getVisibility() != View.GONE) {
                     listview_listpage.setVisibility(View.GONE);
-                    mapView.setVisibility(View.VISIBLE);
+                    map_layout.setVisibility(View.VISIBLE);
                 } else {
                     listview_listpage.setVisibility(View.VISIBLE);
-                    mapView.setVisibility(View.GONE);
+                    map_layout.setVisibility(View.GONE);
                 }
 
 //                intent = new Intent(ListPage_Activity.this, MapList_Activity.class);
@@ -160,6 +169,8 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
     public void changeAddress(BDLocation bdLocation) {
         X = String.valueOf(bdLocation.getLongitude());
         Y = String.valueOf(bdLocation.getLatitude());
+        XX = bdLocation.getLongitude();
+         YY = bdLocation.getLatitude();
         Log.d("", "========x:" + X + "================y:" + Y);
         reciveListView(X, Y,range, String.valueOf(page));
     }
@@ -203,9 +214,9 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
             protected void onPostExecute(Integer result) {
 
                 progressDialog.dismiss();
-                //list
 
 
+          //listview显示   baseAdapter
                 final BaseAdapter baseAdapter = new BaseAdapter() {
                     private TextView nameview;
                     private TextView adressview;
@@ -230,15 +241,25 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
 
                         LayoutInflater layoutInflater = getLayoutInflater();
                         convertView = layoutInflater.inflate(R.layout.inft_item, parent, false);
-                        nameview = (TextView) convertView.findViewById(R.id.name_View);
-                        adressview = (TextView) convertView.findViewById(R.id.address_View);
-                        distanceview = (TextView) convertView.findViewById(R.id.dis_View);
                         convertView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                intent = new Intent(ListPage_Activity.this, MapRoute_Activity.class);
+                                intent.putExtra("getName",rearchDemoList.get(position).getName());
+                                intent.putExtra("getAddress",rearchDemoList.get(position).getAddress());
+                                intent.putExtra("getDistance",rearchDemoList.get(position).getDistance());
+                                intent.putExtra("getTell",rearchDemoList.get(position).getTell());
+                                intent.putExtra("getTimestamp",rearchDemoList.get(position).getTimestamp());
+                                intent.putExtra("getX",rearchDemoList.get(position).getX());
+                                intent.putExtra("getY",rearchDemoList.get(position).getY());
 
+                                startActivity(intent);
                             }
                         });
+                        nameview = (TextView) convertView.findViewById(R.id.name_View);
+                        adressview = (TextView) convertView.findViewById(R.id.address_View);
+                        distanceview = (TextView) convertView.findViewById(R.id.dis_View);
+
                         nameview.setText(rearchDemoList.get(position).getName());
                         adressview.setText(rearchDemoList.get(position).getAddress());
                         distanceview.setText(rearchDemoList.get(position).getDistance());
@@ -248,7 +269,42 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
 
                 listview_listpage.setAdapter(baseAdapter);
 
+        //Mapview显示
 
+                mapController.setZoom(18);
+                //设置中心点s
+                mapController.setCenter(new GeoPoint((int)(YY* 1E6), (int)(XX* 1E6)));
+                Drawable center = getResources().getDrawable(R.drawable.ic_current_loc);
+                centerOverlay = new PoiOverlay<OverlayItem>(center, mapView);
+                GeoPoint cenpoint = new GeoPoint((int)(YY* 1E6), (int)(XX* 1E6));
+
+                OverlayItem overlaycent = new OverlayItem(cenpoint,"","");
+                centerOverlay.addItem(overlaycent);
+
+                //地图扎点
+                Drawable marker = getResources().getDrawable(R.drawable.ic_loc_normal);
+                itemItemizedOverlay = new PoiOverlay<OverlayItem>(marker, mapView);
+              //  for (int i = 0; i < 10; i++) {
+                mapPopWindow = layoutInflater.inflate(R.layout.map_pop_window, null);
+                for(final RearchDemo rearchDemo:rearchDemoList){
+                   double X = Double.parseDouble(rearchDemo.getX());
+                    double Y = Double.parseDouble((rearchDemo.getY()));
+                    Log.d("", "x=====================" + X +"   ==========y:"+Y);
+                    GeoPoint point = new GeoPoint((int)(Y* 1E6), (int)(X* 1E6));
+                    Log.d("", "point  ==============y:"+point);
+                    OverlayItem overlayItem = new OverlayItem(point,rearchDemo.getName()  , rearchDemo.getAddress());
+                    itemItemizedOverlay.addItem(overlayItem);
+
+
+        }
+
+                mapView.getOverlays().add(centerOverlay);
+                mapView.getOverlays().add(itemItemizedOverlay);
+
+
+
+                mapPopWindow.setVisibility(View.GONE);
+                mapView.addView(mapPopWindow);
 
             }
         };
@@ -285,5 +341,86 @@ public class ListPage_Activity extends Activity implements MyLocation.MyLocation
         }
 
 
+    }
+
+    class PoiOverlay<OverlayItem> extends ItemizedOverlay {
+
+        public PoiOverlay(Drawable drawable, MapView mapView) {
+            super(drawable, mapView);
+        }
+
+        @Override
+        protected boolean onTap(int i) {
+            Log.d("BaiduMapDemo", "onTap " + i);
+            com.baidu.mapapi.map.OverlayItem item = itemItemizedOverlay.getItem(i);
+
+            final GeoPoint point = item.getPoint();
+            final String title = item.getTitle();
+            final String content = item.getSnippet();
+
+         //   String distanct = item.get
+
+            TextView titleTextView = (TextView) mapPopWindow.findViewById(R.id.titleTextView);
+            TextView contentTextView = (TextView) mapPopWindow.findViewById(R.id.contentTextView);
+            mapPopWindow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(ListPage_Activity.this, MapRoute_Activity.class);
+                    intent.putExtra("getName", title);
+                    intent.putExtra("getAddress",content );
+//                    intent.putExtra("getDistance", rearchDemo.getDistance());
+//                    intent.putExtra("getTell", rearchDemo.getTell());
+//                    intent.putExtra("getTimestamp", rearchDemo.getTimestamp());
+                    intent.putExtra("getX", point.getLatitudeE6()+"");
+                    intent.putExtra("getY", point.getLongitudeE6()+"");
+
+                    startActivity(intent);
+                }
+            });
+            titleTextView.setText(title);
+            contentTextView.setText(content);
+            contentTextView.setVisibility(View.VISIBLE);
+
+            MapView.LayoutParams layoutParam = new MapView.LayoutParams(
+                    //控件宽,继承自ViewGroup.LayoutParams
+                    MapView.LayoutParams.WRAP_CONTENT,
+                    //控件高,继承自ViewGroup.LayoutParams
+                    MapView.LayoutParams.WRAP_CONTENT,
+                    //使控件固定在某个地理位置
+                    point,
+                    0,
+                    -40,
+                    //控件对齐方式
+                    MapView.LayoutParams.BOTTOM_CENTER);
+
+            mapPopWindow.setVisibility(View.VISIBLE);
+
+            mapPopWindow.setLayoutParams(layoutParam);
+
+            mapController.animateTo(point);
+
+            return super.onTap(i);
+        }
+
+        @Override
+        public boolean onTap(GeoPoint geoPoint, MapView mapView) {
+            Log.d("BaiduMapDemo", "onTap geoPoint " + geoPoint);
+
+            mapPopWindow.setVisibility(View.GONE);
+
+            return super.onTap(geoPoint, mapView);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        mapView.onPause();
+        super.onPause();    //To change body of overridden methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected void onResume() {
+        mapView.onResume();
+        super.onResume();    //To change body of overridden methods use File | Settings | File Templates.
     }
 }

@@ -1,15 +1,21 @@
 package com.test.searcharound.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.baidu.mapapi.*;
 import com.baidu.mapapi.map.MKEvent;
 import com.baidu.mapapi.map.MapController;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
+import com.test.searcharound.Demo.RearchDemo;
 import com.test.searcharound.R;
 
 /**
@@ -25,6 +31,12 @@ public class MapRoute_Activity extends Activity {
     public static final String strKey = "8d0ce7b6adcae2bae226a8b3fe4a179b";
     private MapView mapView;
     private LayoutInflater layoutInflater;
+    private Intent intent;
+    private RearchDemo rearchDemo = new RearchDemo();
+    private Button map_list_rebackButton;
+    private TextView maproute_name;
+    private TextView maproute_adress;
+    private TextView maproute_tell;
 
     /**
      * Called when the activity is first created.
@@ -35,9 +47,51 @@ public class MapRoute_Activity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //初始化baiduMap
-        initBMapManager();
+       // initBMapManager();
         setContentView(R.layout.map_route);
 
+
+        //接收Intent
+        intent = getIntent();
+        rearchDemo.setName(intent.getStringExtra("getName"));
+        rearchDemo.setAddress(intent.getStringExtra("getAddress"));
+        rearchDemo.setDistance(intent.getStringExtra("getDistance"));
+        rearchDemo.setTell(intent.getStringExtra("getTell"));
+        rearchDemo.setTimestamp(intent.getStringExtra("getTimestamp"));
+        rearchDemo.setX(intent.getStringExtra("getX"));
+        rearchDemo.setY(intent.getStringExtra("getY"));
+
+        Log.d("", "========================getName:" + rearchDemo.getName());
+        Log.d("", "========================getAddress:" + rearchDemo.getAddress());
+        Log.d("", "========================getDistance:" + rearchDemo.getDistance());
+        Log.d("", "========================getTell:" + rearchDemo.getTell());
+        Log.d("", "========================getX:" + rearchDemo.getX());
+        Log.d("", "========================getY:" + rearchDemo.getY());
+
+        // 放置数据
+        maproute_name = (TextView) findViewById(R.id.maproute_name);
+        maproute_name.setText(rearchDemo.getName());
+        maproute_adress = (TextView) findViewById(R.id.maproute_adress);
+        maproute_adress.setText(rearchDemo.getAddress());
+        maproute_tell = (TextView) findViewById(R.id.maproute_tell);
+        if(maproute_tell.getText().equals("")){
+            maproute_tell.setText("暂无电话");
+        }else{
+            maproute_tell.setText(rearchDemo.getTell());
+        };
+
+
+        //
+        map_list_rebackButton = (Button)findViewById(R.id.map_list_rebackButton);
+        map_list_rebackButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                MapRoute_Activity.this.finish();
+            }
+        });
+
+        //设置地图
         layoutInflater = LayoutInflater.from(this);
         mapView = (MapView) findViewById(R.id.maproute_view);
         mapController = mapView.getController();

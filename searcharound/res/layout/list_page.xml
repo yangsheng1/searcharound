@@ -85,12 +85,45 @@
     <!--  加载更多-->
 
     <!-- Map 显示-->
-    <com.baidu.mapapi.map.MapView
-            android:id="@+id/mapview"
+    <RelativeLayout         android:id="@+id/map_layout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1">
+                <com.baidu.mapapi.map.MapView
+                        android:id="@+id/mapview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
 
 
-    </com.baidu.mapapi.map.MapView>
+                </com.baidu.mapapi.map.MapView>
+
+        <Button android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="15dp"
+                  android:layout_marginLeft="10dp"
+                  android:background="@drawable/ic_pre"
+                  android:layout_alignParentBottom="true"
+                  android:layout_alignParentLeft="true"
+                >  </Button>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/ic_pre2"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+
+                >  </Button>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_locatiom_change"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+
+                >  </Button>
+    </RelativeLayout>
 
 </LinearLayout>
