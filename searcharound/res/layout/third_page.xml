@@ -5,7 +5,7 @@
               android:layout_height="fill_parent"
               android:background="#ffffff"
         >
-    <!--  HomePage 首页 一级页面-->
+    <!--  third  三级页面-->
 
     <!--  top 顶标题的三个部件-->
     <RelativeLayout
@@ -14,16 +14,16 @@
             android:layout_height="44dp"
             android:background="@drawable/bg_title_bar"
             android:gravity="center">
-        <ImageButton     android:id="@+id/second_reback"
+        <ImageButton     android:id="@+id/third_reback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/home_change_search"
                 android:src="@drawable/ic_nav_back"
                 android:layout_marginLeft="10dp"></ImageButton>
-        <TextView     android:id="@+id/second_title"
+        <TextView       android:id="@+id/third_title"
                 android:layout_width="fill_parent"
                 android:layout_height="44dp"
-                android:text="餐饮服务"
+                android:text="三级页面"
                 android:textColor="#ffffff"
                 android:textSize="16dp"
                 android:gravity="center"></TextView>
@@ -36,7 +36,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-        <ListView     android:id="@+id/listview_second"
+        <ListView
+                android:id="@+id/listview_third"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
