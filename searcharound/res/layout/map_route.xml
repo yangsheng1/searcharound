@@ -54,34 +54,36 @@
                   android:layout_centerVertical="true"
 
             >
-        <LinearLayout android:id="@+id/map_list_rebackButton"
+        <LinearLayout android:id="@+id/maproute_walk"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
                       android:layout_weight="1"
-                      android:background="@drawable/tab">
+                      android:background="@drawable/tab_item_selected">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:background="@drawable/ic_byfoot">
             </ImageView>
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="步行"
                       android:textColor="#000000"
                     >
             </TextView>
         </LinearLayout>
-        <LinearLayout android:id="@+id/map_list_rebackButton"
+        <LinearLayout   android:id="@+id/maproute_bus"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
                       android:layout_weight="1"
-                      android:background="@drawable/tab">
+                      android:background="@drawable/bg_tab_top">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:background="@drawable/bus">
             </ImageView>
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="2dp"
                       android:text="公交"
@@ -89,17 +91,18 @@
                     >
             </TextView>
         </LinearLayout>
-        <LinearLayout android:id="@+id/map_list_rebackButton"
+        <LinearLayout android:id="@+id/maproute_car"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
                       android:layout_weight="1"
-                      android:background="@drawable/tab">
+                      android:background="@drawable/bg_tab_top">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:background="@drawable/ic_bycar">
             </ImageView>
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="驾车"
                       android:textColor="#000000"
@@ -149,14 +152,16 @@
                 android:gravity="center_vertical"
                   android:layout_alignParentBottom="true"
                 android:background="#8f000000">
-            <TextView android:layout_width="wrap_content"
+            <TextView   android:id="@+id/maproute_name"
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="10dp"
                       android:text="XXX大酒店"
                       android:textColor="#ffffff"
                       android:textSize="16dp"
                     >  </TextView>
-            <TextView android:layout_width="wrap_content"
+            <TextView   android:id="@+id/maproute_adress"
+                    android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="10dp"
                       android:text="地址：西安市长安路120XXXX号"
@@ -182,10 +187,10 @@
                    android:layout_height="wrap_content"
                    android:background="@drawable/ic_phone">
         </ImageView>
-        <TextView android:layout_width="wrap_content"
+        <TextView  android:id="@+id/maproute_tell"
+                android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginLeft="10dp"
-                  android:text="暂无电话"
                   android:textColor="#000000"
                 >
         </TextView>

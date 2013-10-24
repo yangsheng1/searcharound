@@ -29,7 +29,7 @@
     <TextView android:id="@+id/dis_View"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textSize="20dp"
+              android:textSize="14dp"
               android:layout_gravity="center_vertical"
               android:layout_marginRight="2dp"
               android:textColor="#808080"
@@ -38,11 +38,12 @@
     <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textSize="20dp"
+
               android:layout_gravity="center_vertical"
               android:layout_marginRight="5dp"
               android:textColor="#808080"
-              android:text="m"
+              android:text=".0 m"
+              android:textSize="14dp"
             ></TextView>
 
 </LinearLayout>
